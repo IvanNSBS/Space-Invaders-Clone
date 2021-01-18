@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8850783606819464420}
   - component: {fileID: 992096375519195395}
   m_Layer: 0
-  m_Name: Hit Particle
+  m_Name: Red Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.59607846}
+      maxColor: {r: 0.5294118, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -976,7 +976,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 25
         minScalar: 30
         maxCurve:
           serializedVersion: 2

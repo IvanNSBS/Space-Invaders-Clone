@@ -3,7 +3,7 @@
 namespace Common
 {
     [RequireComponent(typeof(ParticleSystem))]
-    public class HitEffectParticle : MonoBehaviour
+    public class ParticleKiller : MonoBehaviour
     {
         #region Fields
         private ParticleSystem m_particleSystem;
