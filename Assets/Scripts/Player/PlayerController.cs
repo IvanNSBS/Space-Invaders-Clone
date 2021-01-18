@@ -9,9 +9,9 @@ namespace Player
     [RequireComponent(typeof(Movement), typeof(BulletShooter))]
     public class PlayerController : MonoBehaviour
     {
-        #region Unity Fields
+        #region Inspector Fields
         [SerializeField] private float m_timeBetweenShots = 1.5f;
-        #endregion Unity Fields
+        #endregion Inspector Fields
         
         #region Fields
         private Movement m_movement;

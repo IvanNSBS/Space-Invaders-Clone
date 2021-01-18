@@ -6,9 +6,9 @@ namespace Player
     #pragma warning disable CS0649
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
-        #region Unity Fields
+        #region Inspector Fields
         [SerializeField] private int m_maxHealth;
-        #endregion Unity Fields
+        #endregion Inspector Fields
 
         #region Fields
         private int m_currentHealth;

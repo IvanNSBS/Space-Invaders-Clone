@@ -7,9 +7,9 @@ namespace Common
     [RequireComponent(typeof(Rigidbody2D))]
     public class Movement : MonoBehaviour
     {   
-        #region Unity Fields
+        #region Inspector Fields
         [SerializeField] private float m_movementSpeed;
-        #endregion Unity Fields
+        #endregion Inspector Fields
 
         #region Fields
         private Rigidbody2D m_rigidbody2D;
