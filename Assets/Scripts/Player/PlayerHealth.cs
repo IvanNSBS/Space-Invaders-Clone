@@ -3,6 +3,7 @@ using Common.Interfaces;
 
 namespace Player
 {
+    #pragma warning disable CS0649
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
         #region Unity Fields
