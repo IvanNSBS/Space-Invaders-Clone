@@ -23,10 +23,11 @@ namespace Common
         [SerializeField] private Color m_color;
         [SerializeField] private GameObject m_bulletPrefab;
         [SerializeField] private Transform m_spawnBulletLocation;
+        [SerializeField] private GameObject m_shootEffectPrefab;
+
         
         [Header("Collision")]
         [SerializeField] private LayerMask m_bulletCollisionLayer;
-        [SerializeField] private GameObject m_collisionFX;
         #endregion Fields
         
         
@@ -47,18 +48,19 @@ namespace Common
             }
             else
             {
+                SpawnShootEffect();
                 float verticalDirection = GetBulletVerticalDirection(m_bulletDirection);
-                bullet.StartBullet(m_bulletCollisionLayer, m_bulletSpeed, m_bulletDamage, verticalDirection, m_color, SpawnCollisionEffect);
+                bullet.StartBullet(m_bulletCollisionLayer, m_bulletSpeed, m_bulletDamage, verticalDirection, m_color);
             }
         }
         #endregion Methods
         
         
         #region Utility Methods
-        private void SpawnCollisionEffect(Vector3 collisionLocation)
+        private void SpawnShootEffect()
         {
-            var effect = Instantiate(m_collisionFX);
-            effect.transform.position = collisionLocation;
+            var effect = Instantiate(m_shootEffectPrefab);
+            effect.transform.position = m_spawnBulletLocation.position;
         }
         
         private float GetBulletVerticalDirection(BulletDirection direction)

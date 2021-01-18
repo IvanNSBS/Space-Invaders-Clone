@@ -1,4 +1,5 @@
 ﻿using Common;
+using DG.Tweening;
 using UnityEngine;
 using Player.Input;
 using UnityEngine.InputSystem;
@@ -71,11 +72,13 @@ namespace Player
         private void PerformMovement(InputAction.CallbackContext context)
         {
             m_movement.Move(context.ReadValue<float>());
+            transform.DOScale(new Vector3(1.3f, 2.1f, 1.7f), 0.3f);
         }
 
         private void StopMovement(InputAction.CallbackContext context)
         {
             m_movement.Move(0);
+            transform.DOScale(new Vector3(1.7f, 1.7f, 1.7f), 0.2f);
         }
 
         private void StartShooting(InputAction.CallbackContext context)

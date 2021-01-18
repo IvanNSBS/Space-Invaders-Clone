@@ -11,7 +11,6 @@ namespace Common
         #region Fields
         private Rigidbody2D m_rigidbody2D;
         private SpriteRenderer m_spriteRenderer;
-        private Action<Vector3> m_onHitAction;
         private int m_bulletDamage;
         private Sequence m_destroyTimer;
         #endregion Fields
@@ -35,8 +34,9 @@ namespace Common
             if (damageable == null)
                 return;
             
-            damageable.TakeDamage(m_bulletDamage);                
-            m_onHitAction?.Invoke(transform.position);
+            damageable.TakeDamage(m_bulletDamage);    
+            damageable.SpawnDamageEffect(gameObject.transform.position);
+            
             Destroy(gameObject);
         }
 
@@ -53,13 +53,11 @@ namespace Common
             float bulletSpeed, 
             int bulletDamage, 
             float verticalDirection, 
-            Color spawnColor, 
-            Action<Vector3> onHitAction = null)
+            Color spawnColor)
         {
             gameObject.layer = (int)Mathf.Log(layerMask.value, 2);
             m_rigidbody2D.velocity = new Vector2(0, bulletSpeed * verticalDirection)*Time.deltaTime;
             m_bulletDamage = bulletDamage;
-            m_onHitAction = onHitAction;
             m_spriteRenderer.color = spawnColor;
         }
         #endregion Methods

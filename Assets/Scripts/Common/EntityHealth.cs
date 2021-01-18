@@ -8,6 +8,7 @@ namespace Common
     {
         #region Inspector Fields
         [SerializeField] private int m_maxHealth;
+        [SerializeField] private GameObject m_damageTakenEffect;
         #endregion Inspector Fields
 
         #region Fields
@@ -37,6 +38,16 @@ namespace Common
             if(m_currentHealth <= 0)
                 Die();
         }
+
+        public void SpawnDamageEffect(Vector3 atLocation)
+        {
+            if (m_damageTakenEffect != null)
+            {
+                var effect = Instantiate(m_damageTakenEffect);
+                effect.transform.position = atLocation;
+            }
+        }
+
         #endregion Damageable Methods
     }
 }
