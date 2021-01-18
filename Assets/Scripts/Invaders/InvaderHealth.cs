@@ -1,8 +1,8 @@
 ﻿using Common;
 
-namespace Player
+namespace Invaders
 {
-    public class PlayerHealth : EntityHealth
+    public class InvaderHealth : EntityHealth
     {
         #region EntityHealth Methods
         protected override void Die()

@@ -29,7 +29,7 @@ namespace Common
             m_destroyTimer.AppendCallback(() => Destroy(gameObject));
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             var damageable = other.gameObject.GetComponent<IDamageable>();
             if (damageable == null)
@@ -37,6 +37,7 @@ namespace Common
             
             damageable.TakeDamage(m_bulletDamage);                
             m_onHitAction?.Invoke(transform.position);
+            Destroy(gameObject);
         }
 
         private void OnDestroy()
