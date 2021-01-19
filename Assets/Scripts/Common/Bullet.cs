@@ -23,7 +23,7 @@ namespace Common
             m_destroyTimer = DOTween.Sequence();
 
             // Destroy bullet after some time if it didn't hit anything
-            m_destroyTimer.AppendInterval(3.0f);
+            m_destroyTimer.AppendInterval(6.0f);
             m_destroyTimer.AppendCallback(() => Destroy(gameObject));
         }
 
