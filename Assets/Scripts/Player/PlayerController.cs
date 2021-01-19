@@ -1,5 +1,7 @@
 ﻿using Common;
 using DG.Tweening;
+using Managers;
+using Managers.Services;
 using UnityEngine;
 using Player.Input;
 using UnityEngine.InputSystem;
@@ -7,7 +9,7 @@ using UnityEngine.InputSystem;
 namespace Player
 {
     #pragma warning disable CS0649
-    [RequireComponent(typeof(Movement), typeof(BulletShooter))]
+    [RequireComponent(typeof(Movement), typeof(BulletShooter), typeof(PlayerHealth))]
     public class PlayerController : MonoBehaviour
     {
         #region Inspector Fields
@@ -20,7 +22,13 @@ namespace Player
         private PlayerInputHandler m_playerInput;
         private float m_currentCooldown;
         private bool m_shooting;
+        private PlayerHealth m_playerHealth;
         #endregion Fields
+        
+        
+        #region Properties
+        public PlayerHealth PlayerHealth => m_playerHealth;
+        #endregion Properties
         
         
         #region MonoBehaviour Methods
@@ -34,6 +42,9 @@ namespace Player
 
             m_movement = GetComponent<Movement>();
             m_bulletShooter = GetComponent<BulletShooter>();
+            m_playerHealth = GetComponent<PlayerHealth>();
+            
+            ServiceLocator.Current.GetService<PlayerFinder>().SetPlayerData(this);
         }
 
         private void Update()

@@ -20,11 +20,6 @@ namespace Invaders
         #endregion Fields
         
         
-        #region Public Fields
-        public Action onInvaderDeath;
-        #endregion Public Fields
-        
-        
         #region Methods
         public void Initialize(BulletShooter shooter, InvadersController controller)
         {
@@ -55,7 +50,7 @@ namespace Invaders
                 }
 
                 m_controllerReference.RemoveShooter(m_shooterReference);
-                onInvaderDeath?.Invoke();
+                onDeath?.Invoke();
                 Destroy(gameObject);
             });
         }

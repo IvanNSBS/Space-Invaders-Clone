@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Invaders
 {
+    #pragma warning disable CS0649
     [RequireComponent(typeof(InvaderHealth))]
     public class InvaderScore : MonoBehaviour
     {
@@ -14,12 +15,12 @@ namespace Invaders
         #region MonoBehaviour Methods
         private void Awake()
         {
-            GetComponent<InvaderHealth>().onInvaderDeath += AddScore;
+            GetComponent<InvaderHealth>().onDeath += AddScore;
         }
 
         private void OnDestroy()
         {
-            GetComponent<InvaderHealth>().onInvaderDeath -= AddScore;
+            GetComponent<InvaderHealth>().onDeath -= AddScore;
         }
         #endregion MonoBehaviour Methods
         

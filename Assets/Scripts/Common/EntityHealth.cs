@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Common.Interfaces;
 
 namespace Common
@@ -15,6 +16,18 @@ namespace Common
         #region Fields
         private int m_currentHealth;
         #endregion Fields
+        
+        
+        #region Properties
+        public int MaxHealth => m_maxHealth;
+        #endregion Properties
+        
+
+        #region Public Fields
+        public Action onDamageTaken;
+        public Action onDeath;
+        #endregion Public Fields
+        
         
         #region MonoBehaviour Methods
         private void Awake()
@@ -35,6 +48,7 @@ namespace Common
         {
             m_currentHealth -= damage;
             DamageTakenAnimation();
+            onDamageTaken?.Invoke();
             
             if(m_currentHealth <= 0)
                 Die();

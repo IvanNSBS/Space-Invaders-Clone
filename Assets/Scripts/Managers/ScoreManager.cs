@@ -22,6 +22,7 @@ namespace Managers
         #region Properties
         public int CurrentScore => m_currentScore;
         public int HiScore => m_hiScore;
+        public Action onAddScore;
         #endregion Properties
         
         
@@ -32,7 +33,7 @@ namespace Managers
             if (m_currentScore > m_hiScore)
                 m_hiScore = m_currentScore;
             
-            Debug.Log($"current score: {m_currentScore} | hi-score: {m_hiScore}");
+            onAddScore?.Invoke();
             SaveHiScore();
         }
 

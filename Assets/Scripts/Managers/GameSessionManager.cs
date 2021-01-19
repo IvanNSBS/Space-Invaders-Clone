@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using Managers.Services;
+using UnityEngine;
 
 namespace Managers
 {
@@ -23,6 +25,8 @@ namespace Managers
             instance = this;
             InitializeServices();
             DontDestroyOnLoad(this);
+            
+            DOTween.SetTweensCapacity(300, 200);
         }
         #endregion MonoBehaviour Methods
         
@@ -33,6 +37,8 @@ namespace Managers
             ServiceLocator.Initialize();
             
             ServiceLocator.Current.RegisterService(new ScoreManager());
+            ServiceLocator.Current.RegisterService(new PlayerFinder());
+            
             // ServiceLocator.Current.RegisterService(new SoundManager());
         }
         #endregion Methods
