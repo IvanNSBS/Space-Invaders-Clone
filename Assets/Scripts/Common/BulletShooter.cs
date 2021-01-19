@@ -58,6 +58,9 @@ namespace Common
         #region Methods
         public void Shoot()
         {
+            if (m_spawnBulletLocation == null)
+                return;
+            
             var bulletGameObject = Instantiate(m_bulletPrefab);
             bulletGameObject.transform.position = m_spawnBulletLocation.position;
             

@@ -49,7 +49,9 @@ namespace Invaders
                     deathParticle.transform.position = gameObject.transform.position;
                 }
 
-                m_controllerReference.RemoveShooter(m_shooterReference);
+                if(m_controllerReference)
+                    m_controllerReference.RemoveShooter(m_shooterReference);
+                
                 onDeath?.Invoke();
                 Destroy(gameObject);
             });

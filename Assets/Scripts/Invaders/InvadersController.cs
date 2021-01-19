@@ -25,10 +25,12 @@ namespace Invaders
         [Header("Invader Shooting")] 
         [Range(0.1f, 5.0f)]
         [SerializeField] private float m_delayBetweenShots;
-        
+
         [Header("Special Invader")] 
+        [SerializeField] private Transform m_leftSpawnPoint;
+        [SerializeField] private Transform m_rightSpawnPoint;
         [SerializeField] private GameObject m_specialInvaderPrefab;
-        [SerializeField] private float m_specialInvaderSpawnDelay;
+        [SerializeField] private float m_timeBetweenSpawnSpecialInvader;
         #endregion Inspector Fields
         
         
@@ -37,7 +39,14 @@ namespace Invaders
         private float m_currentShotDelay;
         private Vector3 m_initialTransformPosition;
         private InvadersMovement m_invadersMovement;
+        private float m_currentSpecialInvaderCooldown;
         #endregion Fields
+        
+        
+        #region Properties
+        public List<GameObject> InvaderRows => m_rows;
+        #endregion Properties
+        
         
         #region MonoBehaviour Methods
         private void Awake()
@@ -46,15 +55,24 @@ namespace Invaders
             m_initialTransformPosition = transform.position;
             m_currentShotDelay = m_delayBetweenShots;
             m_invadersMovement = GetComponent<InvadersMovement>();
+            m_currentSpecialInvaderCooldown = m_timeBetweenSpawnSpecialInvader;
         }
 
         private void Update()
         {
             m_currentShotDelay -= Time.deltaTime;
+            m_currentSpecialInvaderCooldown -= Time.deltaTime;
+            
             if (m_currentShotDelay <= 0.0f)
             {
                 Shoot();
                 m_currentShotDelay = m_delayBetweenShots;
+            }
+
+            if (m_currentSpecialInvaderCooldown <= 0.0f)
+            {
+                m_currentSpecialInvaderCooldown = m_timeBetweenSpawnSpecialInvader;
+                SpawnSpecialInvader();
             }
         }
         #endregion MonoBehaviour Methods
@@ -124,6 +142,23 @@ namespace Invaders
             int index = random.Next(m_invaderShooters.Count);
             m_invaderShooters[index].Shoot();
         }
+
+        private void SpawnSpecialInvader()
+        {
+            float random = Random.Range(0, 1);
+            var specialInvader = Instantiate(m_specialInvaderPrefab);
+            
+            if (random >= 0.5f)
+            {
+                specialInvader.transform.position = m_leftSpawnPoint.position;
+                specialInvader.GetComponent<SpecialInvaderController>().StartSpecialInvaderController(this, 1);
+            }
+            else
+            {
+                specialInvader.transform.position = m_rightSpawnPoint.position;
+                specialInvader.GetComponent<SpecialInvaderController>().StartSpecialInvaderController(this, -1);
+            }
+        }
         #endregion Methods
         
         
@@ -145,6 +180,11 @@ namespace Invaders
             float halfCellSize = m_invaderCellSize / 2f;
             float xOffset = (m_numberOfInvadersInRow / 2f) * m_invaderCellSize + halfCellSize;
             return xOffset;
+        }
+
+        public void AddShooter(BulletShooter shooter)
+        {
+            m_invaderShooters.Add(shooter);
         }
 
         public bool RemoveShooter(BulletShooter shooter)
