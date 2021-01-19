@@ -1,6 +1,7 @@
-﻿using DG.Tweening;
+﻿using UnityEngine;
+using DG.Tweening;
 using Managers.Services;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -26,18 +27,31 @@ namespace Managers
             InitializeServices();
             DontDestroyOnLoad(this);
             
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
+            
             DOTween.SetTweensCapacity(300, 200);
         }
         #endregion MonoBehaviour Methods
         
         
         #region Methods
+        public void EndSession(float finishDelay)
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.AppendInterval(finishDelay);
+            sequence.AppendCallback(() =>
+            {
+                SceneManager.LoadSceneAsync("Menu");
+            });
+        }
+        
         private void InitializeServices()
         {
             ServiceLocator.Initialize();
             
             ServiceLocator.Current.RegisterService(new ScoreManager());
-            ServiceLocator.Current.RegisterService(new PlayerFinder());
+            ServiceLocator.Current.RegisterService(new ControllersFinder());
             
             GameObject soundManagerPrefab = Instantiate(Resources.Load("Audio/SoundManager")) as GameObject;
             if (soundManagerPrefab != null)

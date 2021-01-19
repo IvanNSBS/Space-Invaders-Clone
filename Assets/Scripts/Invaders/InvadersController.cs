@@ -2,6 +2,8 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using Managers;
+using Managers.Services;
 using DotNetRandom = System.Random;
 using UnityRandom = UnityEngine.Random;
 
@@ -21,6 +23,7 @@ namespace Invaders
         [SerializeField] private int m_numberOfInvadersInRow = 11;
         [SerializeField] private List<GameObject> m_rows;
         [SerializeField] private float m_invaderCellSize = 5f;
+        [SerializeField] private Transform m_yTargetTransform;
 
         [Header("Invader Shooting")] 
         [Range(0.1f, 5.0f)]
@@ -56,6 +59,8 @@ namespace Invaders
             m_currentShotDelay = m_delayBetweenShots;
             m_invadersMovement = GetComponent<InvadersMovement>();
             m_currentSpecialInvaderCooldown = m_timeBetweenSpawnSpecialInvader;
+            
+            ServiceLocator.Current.GetService<ControllersFinder>().SetInvadersData(this);
         }
 
         private void Update()
@@ -100,11 +105,16 @@ namespace Invaders
                     var invader = Instantiate(invaderPrefab, transform);
                     var bulletShooter = invader.GetComponent<BulletShooter>();
                     var invaderHealth = invader.GetComponent<InvaderHealth>();
+                    var positionChecker = invader.GetComponent<InvaderCheckPositionLimit>();
                     if (bulletShooter != null)
                     {
                         m_invaderShooters.Add(bulletShooter);
                         if (invaderHealth != null)
                             invaderHealth.Initialize(bulletShooter, this);
+                    }
+                    if (positionChecker != null && m_yTargetTransform != null)
+                    {
+                        positionChecker.SetYTarget(m_yTargetTransform.position.y);
                     }
                     
                     Vector3 spawnPosition = transform.position + new Vector3(currentXOffset, outsideScreenY, 0);
@@ -159,6 +169,15 @@ namespace Invaders
                 specialInvader.GetComponent<SpecialInvaderController>().StartSpecialInvaderController(this, -1);
             }
         }
+
+        public void StopInvaders()
+        {
+            m_invadersMovement.StopMovement();
+            m_currentShotDelay = 99999f;
+            m_delayBetweenShots = 9999f;
+            m_currentSpecialInvaderCooldown = 99999f;
+            m_timeBetweenSpawnSpecialInvader = 99999f;
+        }
         #endregion Methods
         
         
@@ -181,12 +200,7 @@ namespace Invaders
             float xOffset = (m_numberOfInvadersInRow / 2f) * m_invaderCellSize + halfCellSize;
             return xOffset;
         }
-
-        public void AddShooter(BulletShooter shooter)
-        {
-            m_invaderShooters.Add(shooter);
-        }
-
+        
         public bool RemoveShooter(BulletShooter shooter)
         {
             bool result = m_invaderShooters.Remove(shooter);

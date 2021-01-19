@@ -10,7 +10,6 @@ namespace View
     {
         #region Inspector Fields
         [SerializeField] private Button m_playButton;
-        [SerializeField] private float m_buttonAnimationMaxMove = 10f;
         [SerializeField] private float m_moveDuration = 1f;
         #endregion Inspector Fields
         

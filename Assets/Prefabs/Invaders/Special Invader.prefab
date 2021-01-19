@@ -125,11 +125,11 @@ MonoBehaviour:
   m_maxHealth: 3
   m_damageTakenEffect: {fileID: 8850783606819464423, guid: c960992739b59854dbdc8ad165f813be,
     type: 3}
+  m_deathEffect: {fileID: 8850783606819464423, guid: c960992739b59854dbdc8ad165f813be,
+    type: 3}
   m_damageTakenSound: {fileID: 8300000, guid: c38761ecd43d54648865bfedab988993, type: 3}
   m_deathSound: {fileID: 8300000, guid: 09d41621e8b6cbf4f86e2e8e4a9f3f25, type: 3}
   m_soundVolume: 0.05
-  m_deathParticle: {fileID: 8850783606819464423, guid: c960992739b59854dbdc8ad165f813be,
-    type: 3}
 --- !u!114 &1410328878600355192
 MonoBehaviour:
   m_ObjectHideFlags: 0

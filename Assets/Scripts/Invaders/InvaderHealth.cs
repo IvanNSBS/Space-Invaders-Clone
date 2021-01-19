@@ -1,5 +1,4 @@
-﻿using System;
-using Common;
+﻿using Common;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,10 +7,6 @@ namespace Invaders
     #pragma warning disable CS0649
     public class InvaderHealth : EntityHealth
     {
-        #region Inspector Fields
-        [SerializeField] private GameObject m_deathParticle;
-        #endregion Inspector Fields
-        
         #region Fields
         private Sequence m_damageSequence;
         private bool m_dying;
@@ -43,11 +38,7 @@ namespace Invaders
             sequence.Append(transform.DOScale(new Vector3(1.9f, 1.9f, 1), 0.5f).SetEase(Ease.OutQuint));
             sequence.AppendCallback(() =>
             {
-                if (m_deathParticle != null)
-                {
-                    var deathParticle = Instantiate(m_deathParticle);
-                    deathParticle.transform.position = gameObject.transform.position;
-                }
+                SpawnDamageEffect(gameObject.transform.position);
 
                 if(m_controllerReference)
                     m_controllerReference.RemoveShooter(m_shooterReference);

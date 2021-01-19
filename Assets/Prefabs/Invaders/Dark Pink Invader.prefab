@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2042555083545266580}
   - component: {fileID: 5986840886097397758}
   - component: {fileID: 9117636265275973625}
+  - component: {fileID: 2697587824987833862}
   m_Layer: 9
   m_Name: Dark Pink Invader
   m_TagString: Untagged
@@ -99,11 +100,11 @@ MonoBehaviour:
   m_maxHealth: 2
   m_damageTakenEffect: {fileID: 2478366936800859092, guid: 3ac6e85e080bb7d40b639aa711e58799,
     type: 3}
+  m_deathEffect: {fileID: 8850783606819464423, guid: 0df2cebf5828ad542bf2dec47753bf79,
+    type: 3}
   m_damageTakenSound: {fileID: 8300000, guid: 2d5395044d8202c408c79172badd3f5d, type: 3}
   m_deathSound: {fileID: 8300000, guid: 09d41621e8b6cbf4f86e2e8e4a9f3f25, type: 3}
   m_soundVolume: 0.05
-  m_deathParticle: {fileID: 8850783606819464423, guid: 0df2cebf5828ad542bf2dec47753bf79,
-    type: 3}
 --- !u!114 &5986840886097397758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_score: 75
+--- !u!114 &2697587824987833862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042555083545266665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06a781cef4e4d0a94daa025cf8a4c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3244284808335228067
 GameObject:
   m_ObjectHideFlags: 0

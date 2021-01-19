@@ -13,11 +13,13 @@ namespace Common
         [Header("Health")]
         [SerializeField] private int m_maxHealth;
         [SerializeField] private GameObject m_damageTakenEffect;
+        [SerializeField] private GameObject m_deathEffect;
         
         [Header("Audio")] 
         [SerializeField] private AudioClip m_damageTakenSound;
         [SerializeField] private AudioClip m_deathSound;
         [SerializeField] [Range(0, 1)] private float m_soundVolume = 1;
+        
         #endregion Inspector Fields
 
         #region Fields
@@ -83,7 +85,15 @@ namespace Common
                 effect.transform.position = atLocation;
             }
         }
-
+        
+        public void SpawnDeathEffect(Vector3 atLocation)
+        {
+            if (m_deathEffect != null)
+            {
+                var effect = Instantiate(m_deathEffect);
+                effect.transform.position = atLocation;
+            }
+        }
         #endregion Damageable Methods
     }
 }

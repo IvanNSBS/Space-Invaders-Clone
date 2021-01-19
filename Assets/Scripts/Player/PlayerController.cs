@@ -44,7 +44,7 @@ namespace Player
             m_bulletShooter = GetComponent<BulletShooter>();
             m_playerHealth = GetComponent<PlayerHealth>();
             
-            ServiceLocator.Current.GetService<PlayerFinder>().SetPlayerData(this);
+            ServiceLocator.Current.GetService<ControllersFinder>().SetPlayerData(this);
         }
 
         private void Update()

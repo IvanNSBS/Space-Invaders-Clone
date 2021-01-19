@@ -83,6 +83,13 @@ namespace Invaders
                 m_movingDown = false;
             });
         }
+
+        public void StopMovement()
+        {
+            m_moveDirection = 0.0f;
+            m_moveDownSpeed = 0.0f;
+            m_horizontalSpeed = 0.0f;
+        }
         #endregion Methods
     }
 }

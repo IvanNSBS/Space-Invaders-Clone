@@ -1,16 +1,19 @@
-﻿using Player;
+﻿using Invaders;
+using Player;
 using Managers.Interfaces;
 
 namespace Managers.Services
 {
-    public class PlayerFinder : IGameService
+    public class ControllersFinder : IGameService
     {
         #region Fields
         private PlayerController m_playerController;
+        private InvadersController m_invadersController;
         #endregion Fields
 
         #region Properties
         public PlayerController PlayerController => m_playerController;
+        public InvadersController InvadersController => m_invadersController;
         #endregion Properties
         
 
@@ -18,6 +21,11 @@ namespace Managers.Services
         public void SetPlayerData(PlayerController playerController)
         {
             m_playerController = playerController;
+        }
+        
+        public void SetInvadersData(InvadersController invadersController)
+        {
+            m_invadersController = invadersController;
         }
         #endregion Methods
         

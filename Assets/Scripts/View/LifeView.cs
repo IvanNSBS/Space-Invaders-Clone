@@ -29,7 +29,7 @@ namespace View
 
         private void Start()
         {
-            PlayerController playerController = ServiceLocator.Current.GetService<PlayerFinder>().PlayerController;
+            PlayerController playerController = ServiceLocator.Current.GetService<ControllersFinder>().PlayerController;
             playerController.PlayerHealth.onDamageTaken += PlayerDamaged;
             
             for (int i = 0; i < playerController.PlayerHealth.MaxHealth; i++)
