@@ -39,7 +39,12 @@ namespace Managers
             ServiceLocator.Current.RegisterService(new ScoreManager());
             ServiceLocator.Current.RegisterService(new PlayerFinder());
             
-            // ServiceLocator.Current.RegisterService(new SoundManager());
+            GameObject soundManagerPrefab = Instantiate(Resources.Load("Audio/SoundManager")) as GameObject;
+            if (soundManagerPrefab != null)
+            {
+                SoundManager soundManager = soundManagerPrefab.GetComponent<SoundManager>();
+                ServiceLocator.Current.RegisterService(soundManager);
+            }
         }
         #endregion Methods
     }
