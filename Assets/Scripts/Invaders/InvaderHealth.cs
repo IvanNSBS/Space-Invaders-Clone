@@ -12,11 +12,16 @@ namespace Invaders
         
         #region Fields
         private Sequence m_damageSequence;
+        private bool m_dying;
         #endregion Fields
         
         #region EntityHealth Methods
         protected override void Die()
         {
+            if (m_dying)
+                return;
+
+            m_dying = true;
             m_damageSequence.Kill();
             
             Sequence sequence = DOTween.Sequence();
@@ -35,6 +40,9 @@ namespace Invaders
 
         protected override void DamageTakenAnimation()
         {
+            if (m_dying)
+                return;
+            
             m_damageSequence = DOTween.Sequence();
             m_damageSequence.Append(transform.DOShakeScale(0.4f, new Vector3(0.8f, 0.9f), 15));
         }

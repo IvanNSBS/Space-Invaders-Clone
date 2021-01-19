@@ -34,8 +34,8 @@ namespace Common
             if (damageable == null)
                 return;
             
-            damageable.TakeDamage(m_bulletDamage);    
             damageable.SpawnDamageEffect(gameObject.transform.position);
+            damageable.TakeDamage(m_bulletDamage);    
             
             Destroy(gameObject);
         }

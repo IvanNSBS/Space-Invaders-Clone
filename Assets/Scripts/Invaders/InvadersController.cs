@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using DG.Tweening;
+using System.Collections.Generic;
 
 namespace Invaders
 {
     #pragma warning disable CS0649
-    public class InvaderSpawner : MonoBehaviour
+    public class InvadersController : MonoBehaviour
     {
         #region Inspector Fields
         [Header("Spawn Animation")] 
@@ -33,12 +33,10 @@ namespace Invaders
         
         
         #region Methods
-
         private void SpawnInvaders()
         {
             int rowCount = m_rows.Count;
             float halfCellSize = m_invaderCellSize / 2f;
-            float yOffset = rowCount / 2f * m_invaderCellSize + halfCellSize;
             float xOffset = -(m_numberOfInvadersInRow / 2f) * m_invaderCellSize + halfCellSize;
             
             float currentYOffset = 0;
@@ -91,6 +89,13 @@ namespace Invaders
             }
             
             SpawnInvaders();
+        }
+
+        public float GetLateralHerdSize()
+        {            
+            float halfCellSize = m_invaderCellSize / 2f;
+            float xOffset = (m_numberOfInvadersInRow / 2f) * m_invaderCellSize + halfCellSize;
+            return xOffset;
         }
         #endregion Utility Methods
     }
