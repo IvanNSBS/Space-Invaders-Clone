@@ -8,6 +8,7 @@ using UnityRandom = UnityEngine.Random;
 namespace Invaders
 {
     #pragma warning disable CS0649
+    [RequireComponent(typeof(InvadersMovement))]
     public class InvadersController : MonoBehaviour
     {
         #region Inspector Fields
@@ -35,6 +36,7 @@ namespace Invaders
         private List<BulletShooter> m_invaderShooters;
         private float m_currentShotDelay;
         private Vector3 m_initialTransformPosition;
+        private InvadersMovement m_invadersMovement;
         #endregion Fields
         
         #region MonoBehaviour Methods
@@ -43,6 +45,7 @@ namespace Invaders
             SpawnInvaders();
             m_initialTransformPosition = transform.position;
             m_currentShotDelay = m_delayBetweenShots;
+            m_invadersMovement = GetComponent<InvadersMovement>();
         }
 
         private void Update()
@@ -147,6 +150,17 @@ namespace Invaders
         public bool RemoveShooter(BulletShooter shooter)
         {
             bool result = m_invaderShooters.Remove(shooter);
+            
+            float remainingPercent = (m_rows.Count*m_numberOfInvadersInRow)/(float)m_invaderShooters.Count;
+            if (remainingPercent > 0.25f && remainingPercent < 0.6f)
+            {
+                m_invadersMovement.MoveSpeedMultiplier = 1.15f;
+            }
+            else if (remainingPercent < 0.25f)
+            {
+                m_invadersMovement.MoveSpeedMultiplier = 1.25f;
+            }
+            
             if (m_invaderShooters.Count == 0)
             {
                 Sequence sequence = DOTween.Sequence();

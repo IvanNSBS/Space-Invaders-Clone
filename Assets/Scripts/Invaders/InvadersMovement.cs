@@ -22,12 +22,19 @@ namespace Invaders
         private InvadersController m_invadersController;
         private bool m_movingDown;
         #endregion Fields
+
+        
+        #region Properties
+        public float MoveSpeedMultiplier { get; set; }
+        #endregion Properties
+        
         
         #region MonoBehaviour Methods
         private void Awake()
         {
             m_invadersController = GetComponent<InvadersController>();
 
+            MoveSpeedMultiplier = 1.0f;
             m_moveDirection = 0f;
             Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(m_startSideMovementDelay);
@@ -61,7 +68,7 @@ namespace Invaders
                 }
             }
 
-            transform.position += new Vector3(m_moveDirection * m_horizontalSpeed, 0)*Time.deltaTime;
+            transform.position += new Vector3(m_moveDirection * m_horizontalSpeed*MoveSpeedMultiplier, 0)*Time.deltaTime;
         }
         #endregion MonoBehaviour Methods
         
@@ -75,7 +82,7 @@ namespace Invaders
                 m_moveDirection = 0f;
                 m_movingDown = true;
             });
-            sequence.Append(transform.DOMoveY(transform.position.y - m_verticalMovement, m_moveDownSpeed));
+            sequence.Append(transform.DOMoveY(transform.position.y - m_verticalMovement, m_moveDownSpeed*(1-MoveSpeedMultiplier)));
             sequence.AppendCallback(() =>
             {
                 m_moveDirection = nextMovementDirection;

@@ -1657,7 +1657,7 @@ MonoBehaviour:
   - {fileID: 2042555083545266665, guid: c4330bcb533674e4995ce5b825702a50, type: 3}
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   m_invaderCellSize: 0.5
-  m_delayBetweenShots: 1
+  m_delayBetweenShots: 1.5
   m_specialInvaderPrefab: {fileID: 0}
   m_specialInvaderSpawnDelay: 0
 --- !u!114 &1930440134
