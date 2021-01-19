@@ -34,12 +34,14 @@ namespace Invaders
         #region Fields
         private List<BulletShooter> m_invaderShooters;
         private float m_currentShotDelay;
+        private Vector3 m_initialTransformPosition;
         #endregion Fields
         
         #region MonoBehaviour Methods
         private void Awake()
         {
             SpawnInvaders();
+            m_initialTransformPosition = transform.position;
             m_currentShotDelay = m_delayBetweenShots;
         }
 
@@ -130,7 +132,8 @@ namespace Invaders
             {
                 Destroy(child.gameObject);
             }
-            
+
+            transform.position = m_initialTransformPosition;
             SpawnInvaders();
         }
 
@@ -142,8 +145,16 @@ namespace Invaders
         }
 
         public bool RemoveShooter(BulletShooter shooter)
-        { 
-            return m_invaderShooters.Remove(shooter);
+        {
+            bool result = m_invaderShooters.Remove(shooter);
+            if (m_invaderShooters.Count == 0)
+            {
+                Sequence sequence = DOTween.Sequence();
+                sequence.AppendInterval(0.7f);
+                sequence.AppendCallback(RespawnInvaders);
+            }
+            
+            return result;
         }
         #endregion Utility Methods
     }
