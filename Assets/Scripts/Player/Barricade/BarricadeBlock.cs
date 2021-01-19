@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using Common.Interfaces;
+using Managers;
 
 namespace Player.Barricade
 {
     [RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
     public class BarricadeBlock : MonoBehaviour, IDamageable
     {
+        #region Inspector Fields
+        [SerializeField] private AudioClip m_hitAudio;
+        [SerializeField][Range(0,1)] private float m_soundVolume = 0.065f;
+        #endregion Inspector Fields
+        
+        
         #region Fields
         private GameObject m_damagedEffect;
         private SpriteRenderer m_spriteRenderer;
@@ -36,6 +43,13 @@ namespace Player.Barricade
         public void TakeDamage(int damage)
         {
             m_barricade.PlayDamagedAnimation();
+            
+            if (m_hitAudio != null)
+            {
+                ServiceLocator.Current.GetService<SoundManager>().
+                    PlayAudioClipAtLocation(m_hitAudio, m_soundVolume, transform.position);
+            }
+            
             Destroy(gameObject);
         }
 

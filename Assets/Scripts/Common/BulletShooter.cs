@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using Managers;
 using UnityEngine;
 
 namespace Common
@@ -33,6 +34,10 @@ namespace Common
         [SerializeField] private GameObject m_shootEffectPrefab;
         [SerializeField] bool m_useSquashAndStretch = true;
         [SerializeField] private Transform m_squashAndStretchTarget;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioClip m_shootSound;
+        [SerializeField] [Range(0, 1)] private float m_soundVolume = 1;
         #endregion Inspector Fields
         
         #region Fields
@@ -66,6 +71,11 @@ namespace Common
                 SpawnShootEffect();
                 float verticalDirection = GetBulletVerticalDirection(m_bulletDirection);
                 bullet.StartBullet(m_bulletCollisionLayer, m_bulletSpeed, m_bulletDamage, verticalDirection, m_color);
+
+                if (m_shootSound != null)
+                {
+                    ServiceLocator.Current.GetService<SoundManager>().PlayAudioClipAtLocation(m_shootSound, m_soundVolume, m_spawnBulletLocation.position);
+                }
             }
         }
         #endregion Methods

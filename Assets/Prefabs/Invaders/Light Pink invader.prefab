@@ -99,6 +99,9 @@ MonoBehaviour:
   m_maxHealth: 1
   m_damageTakenEffect: {fileID: 2478366936800859092, guid: a3ab7eddff8c1ad40bb41759bbdd73d7,
     type: 3}
+  m_damageTakenSound: {fileID: 8300000, guid: 2d5395044d8202c408c79172badd3f5d, type: 3}
+  m_deathSound: {fileID: 8300000, guid: 09d41621e8b6cbf4f86e2e8e4a9f3f25, type: 3}
+  m_soundVolume: 0.05
   m_deathParticle: {fileID: 8850783606819464423, guid: 0f12553ee8444574bbcb02558e69520e,
     type: 3}
 --- !u!114 &5986840886097397758
@@ -127,6 +130,8 @@ MonoBehaviour:
     type: 3}
   m_useSquashAndStretch: 1
   m_squashAndStretchTarget: {fileID: 3993403649907122065}
+  m_shootSound: {fileID: 8300000, guid: e6d9556b72478354ebeb24859119ca02, type: 3}
+  m_soundVolume: 0.2
 --- !u!114 &9117636265275973625
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Common.Interfaces;
+using Managers;
 
 namespace Common
 {
@@ -9,8 +10,14 @@ namespace Common
     public abstract class EntityHealth : MonoBehaviour, IDamageable
     {
         #region Inspector Fields
+        [Header("Health")]
         [SerializeField] private int m_maxHealth;
         [SerializeField] private GameObject m_damageTakenEffect;
+        
+        [Header("Audio")] 
+        [SerializeField] private AudioClip m_damageTakenSound;
+        [SerializeField] private AudioClip m_deathSound;
+        [SerializeField] [Range(0, 1)] private float m_soundVolume = 1;
         #endregion Inspector Fields
 
         #region Fields
@@ -50,8 +57,22 @@ namespace Common
             DamageTakenAnimation();
             onDamageTaken?.Invoke();
             
-            if(m_currentHealth <= 0)
+            if (m_damageTakenSound != null)
+            {
+                ServiceLocator.Current.GetService<SoundManager>().
+                    PlayAudioClipAtLocation(m_damageTakenSound, m_soundVolume, transform.position);
+            }
+
+            if (m_currentHealth <= 0)
+            {
+                if (m_deathSound != null)
+                {
+                    ServiceLocator.Current.GetService<SoundManager>().
+                        PlayAudioClipAtLocation(m_deathSound, m_soundVolume, transform.position);
+                }
+                
                 Die();
+            }
         }
 
         public void SpawnDamageEffect(Vector3 atLocation)
