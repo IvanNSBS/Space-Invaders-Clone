@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using System;
+using Common;
 using DG.Tweening;
 using UnityEngine;
 
@@ -19,8 +20,12 @@ namespace Invaders
         #endregion Fields
         
         
+        #region Public Fields
+        public Action onInvaderDeath;
+        #endregion Public Fields
+        
+        
         #region Methods
-
         public void Initialize(BulletShooter shooter, InvadersController controller)
         {
             m_shooterReference = shooter;
@@ -50,6 +55,7 @@ namespace Invaders
                 }
 
                 m_controllerReference.RemoveShooter(m_shooterReference);
+                onInvaderDeath?.Invoke();
                 Destroy(gameObject);
             });
         }
