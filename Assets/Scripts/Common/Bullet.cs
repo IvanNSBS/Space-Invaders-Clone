@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Common.Interfaces;
 
@@ -23,7 +22,7 @@ namespace Common
             m_spriteRenderer = GetComponent<SpriteRenderer>();
             m_destroyTimer = DOTween.Sequence();
 
-            // Destroy bullet after some time if it don't hit anything
+            // Destroy bullet after some time if it didn't hit anything
             m_destroyTimer.AppendInterval(3.0f);
             m_destroyTimer.AppendCallback(() => Destroy(gameObject));
         }

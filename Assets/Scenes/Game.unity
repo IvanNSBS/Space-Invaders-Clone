@@ -194,7 +194,7 @@ MonoBehaviour:
   m_bulletCollisionLayer:
     serializedVersion: 2
     m_Bits: 256
-  m_shootEffectPrefab: {fileID: 8850783606819464423, guid: cbf5e2a3faf08e64e902fd2e07f80231,
+  m_shootEffectPrefab: {fileID: 8850783606819464423, guid: 7a1d789f4c5daa04fbb94eb2261de683,
     type: 3}
   m_useSquashAndStretch: 1
   m_squashAndStretchTarget: {fileID: 321653622}
@@ -884,6 +884,7 @@ MonoBehaviour:
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   m_invaderCellSize: 0.5
+  m_delayBetweenShots: 1
   m_specialInvaderPrefab: {fileID: 0}
   m_specialInvaderSpawnDelay: 0
 --- !u!114 &1930440134

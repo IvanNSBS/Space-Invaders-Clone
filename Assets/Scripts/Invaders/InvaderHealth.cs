@@ -13,7 +13,20 @@ namespace Invaders
         #region Fields
         private Sequence m_damageSequence;
         private bool m_dying;
+        private InvadersController m_controllerReference;
+        private BulletShooter m_shooterReference;
         #endregion Fields
+        
+        
+        #region Methods
+
+        public void Initialize(BulletShooter shooter, InvadersController controller)
+        {
+            m_shooterReference = shooter;
+            m_controllerReference = controller;
+        }
+        #endregion Methods
+        
         
         #region EntityHealth Methods
         protected override void Die()
@@ -34,6 +47,8 @@ namespace Invaders
                     var deathParticle = Instantiate(m_deathParticle);
                     deathParticle.transform.position = gameObject.transform.position;
                 }
+
+                m_controllerReference.RemoveShooter(m_shooterReference);
                 Destroy(gameObject);
             });
         }

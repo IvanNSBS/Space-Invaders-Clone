@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using Common;
+using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using DotNetRandom = System.Random;
+using UnityRandom = UnityEngine.Random;
 
 namespace Invaders
 {
@@ -18,16 +21,36 @@ namespace Invaders
         [SerializeField] private List<GameObject> m_rows;
         [SerializeField] private float m_invaderCellSize = 5f;
 
+        [Header("Invader Shooting")] 
+        [Range(0.1f, 5.0f)]
+        [SerializeField] private float m_delayBetweenShots;
+        
         [Header("Special Invader")] 
         [SerializeField] private GameObject m_specialInvaderPrefab;
         [SerializeField] private float m_specialInvaderSpawnDelay;
         #endregion Inspector Fields
         
         
+        #region Fields
+        private List<BulletShooter> m_invaderShooters;
+        private float m_currentShotDelay;
+        #endregion Fields
+        
         #region MonoBehaviour Methods
         private void Awake()
         {
             SpawnInvaders();
+            m_currentShotDelay = m_delayBetweenShots;
+        }
+
+        private void Update()
+        {
+            m_currentShotDelay -= Time.deltaTime;
+            if (m_currentShotDelay <= 0.0f)
+            {
+                Shoot();
+                m_currentShotDelay = m_delayBetweenShots;
+            }
         }
         #endregion MonoBehaviour Methods
         
@@ -35,13 +58,14 @@ namespace Invaders
         #region Methods
         private void SpawnInvaders()
         {
-            int rowCount = m_rows.Count;
             float halfCellSize = m_invaderCellSize / 2f;
             float xOffset = -(m_numberOfInvadersInRow / 2f) * m_invaderCellSize + halfCellSize;
             
             float currentYOffset = 0;
             float currentXOffset = xOffset;
             float outsideScreenY = GetOutsideScreenYPos();
+
+            m_invaderShooters = new List<BulletShooter>();
             
             foreach (var invaderPrefab in m_rows)
             {
@@ -51,6 +75,15 @@ namespace Invaders
                         continue;
                     
                     var invader = Instantiate(invaderPrefab, transform);
+                    var bulletShooter = invader.GetComponent<BulletShooter>();
+                    var invaderHealth = invader.GetComponent<InvaderHealth>();
+                    if (bulletShooter != null)
+                    {
+                        m_invaderShooters.Add(bulletShooter);
+                        if (invaderHealth != null)
+                            invaderHealth.Initialize(bulletShooter, this);
+                    }
+                    
                     Vector3 spawnPosition = transform.position + new Vector3(currentXOffset, outsideScreenY, 0);
                     invader.transform.position = spawnPosition;
                     
@@ -73,8 +106,15 @@ namespace Invaders
         private void AnimateInvaderSpawn(Transform invaderTransform, float targetYPosition)
         {
             Sequence sequence = DOTween.Sequence();
-            sequence.AppendInterval(Random.Range(m_spawnDelayRange.x, m_spawnDelayRange.y));
+            sequence.AppendInterval(UnityRandom.Range(m_spawnDelayRange.x, m_spawnDelayRange.y));
             sequence.Append(invaderTransform.DOMoveY(targetYPosition, m_spawnMoveDuration).SetEase(Ease.OutBack, m_overShoot));
+        }
+
+        private void Shoot()
+        {
+            var random = new DotNetRandom();
+            int index = random.Next(m_invaderShooters.Count);
+            m_invaderShooters[index].Shoot();
         }
         #endregion Methods
         
@@ -96,6 +136,11 @@ namespace Invaders
             float halfCellSize = m_invaderCellSize / 2f;
             float xOffset = (m_numberOfInvadersInRow / 2f) * m_invaderCellSize + halfCellSize;
             return xOffset;
+        }
+
+        public bool RemoveShooter(BulletShooter shooter)
+        { 
+            return m_invaderShooters.Remove(shooter);
         }
         #endregion Utility Methods
     }
