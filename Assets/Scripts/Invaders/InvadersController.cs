@@ -112,6 +112,9 @@ namespace Invaders
 
         private void Shoot()
         {
+            if (m_invaderShooters.Count == 0)
+                return;
+            
             var random = new DotNetRandom();
             int index = random.Next(m_invaderShooters.Count);
             m_invaderShooters[index].Shoot();

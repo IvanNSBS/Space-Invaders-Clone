@@ -1651,10 +1651,10 @@ MonoBehaviour:
   m_overShoot: 3
   m_numberOfInvadersInRow: 12
   m_rows:
-  - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
-  - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
-  - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
-  - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
+  - {fileID: 2042555083545266665, guid: 87abd0e7a8f1e1348bf10e28d587b50c, type: 3}
+  - {fileID: 2042555083545266665, guid: 1f2812f5ee1ba4341ad5bf581fae68ee, type: 3}
+  - {fileID: 2042555083545266665, guid: 11b606b9cd6cb7a49bcbdf3d16238b58, type: 3}
+  - {fileID: 2042555083545266665, guid: c4330bcb533674e4995ce5b825702a50, type: 3}
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   m_invaderCellSize: 0.5
   m_delayBetweenShots: 1

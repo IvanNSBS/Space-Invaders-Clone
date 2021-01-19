@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5986840886097397758}
   - component: {fileID: 9117636265275973625}
   m_Layer: 9
-  m_Name: Red Invader
+  m_Name: Dark Pink Invader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 2
-  m_damageTakenEffect: {fileID: 2478366936800859092, guid: c075d33658198b0429c3d023f0ff5922,
+  m_damageTakenEffect: {fileID: 2478366936800859092, guid: 3ac6e85e080bb7d40b639aa711e58799,
     type: 3}
-  m_deathParticle: {fileID: 8850783606819464423, guid: 5da5cdfc87b79194f8e0e9bb06cf1cf4,
+  m_deathParticle: {fileID: 8850783606819464423, guid: 0df2cebf5828ad542bf2dec47753bf79,
     type: 3}
 --- !u!114 &5986840886097397758
 MonoBehaviour:
@@ -114,16 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bulletDamage: 1
-  m_bulletSpeed: 530
+  m_bulletSpeed: 470
   m_bulletDirection: 1
-  m_color: {r: 0.5254902, g: 0, b: 0, a: 1}
+  m_color: {r: 0.454902, g: 0, b: 0.5372549, a: 1}
   m_bulletPrefab: {fileID: 3485575165665960321, guid: a61ea3bd35af3f048929a3e64fc38619,
     type: 3}
   m_spawnBulletLocation: {fileID: 6133053327208062501}
   m_bulletCollisionLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_shootEffectPrefab: {fileID: 8850783606819464423, guid: cbf5e2a3faf08e64e902fd2e07f80231,
+  m_shootEffectPrefab: {fileID: 8850783606819464423, guid: f58ed05587447c54aaa60c08dd6d6643,
     type: 3}
   m_useSquashAndStretch: 1
   m_squashAndStretchTarget: {fileID: 3993403649907122065}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6fc1bb4e22467c900074990c2b82a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_score: 110
+  m_score: 75
 --- !u!1 &3244284808335228067
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4307a73fbfe40f943ab320580734e391, type: 3}
-  m_Color: {r: 0.5254902, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.45653307, g: 0, b: 0.5377358, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
