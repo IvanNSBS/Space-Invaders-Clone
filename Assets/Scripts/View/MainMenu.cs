@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace View
 {
-    public class Setup : MonoBehaviour
+    public class MainMenu : MonoBehaviour
     {
         #region Inspector Fields
         [SerializeField] private Button m_playButton;
@@ -31,9 +31,11 @@ namespace View
             if (m_playButton)
             {
                 moveButtonSequence = DOTween.Sequence();
-                float yPosition = transform.localPosition.y;
-                Vector3 finalMoveDown = new Vector3(0, yPosition-m_buttonAnimationMaxMove, 0);
-                moveButtonSequence.Append(m_playButton.transform.DOLocalMove(finalMoveDown, m_moveDuration));
+                Vector3 initialScale = new Vector3(0.95f, 0.95f);
+                Vector3 finalScale = new Vector3(1.05f, 1.05f);
+                
+                m_playButton.gameObject.transform.localScale = initialScale;
+                moveButtonSequence.Append(m_playButton.transform.DOScale(finalScale, m_moveDuration));
                 moveButtonSequence.SetLoops(-1, LoopType.Yoyo);
             }
         }
