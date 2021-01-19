@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playButton: {fileID: 1026019073}
-  m_buttonAnimationMaxMove: 10
   m_moveDuration: 1
 --- !u!1 &1026019071
 GameObject:

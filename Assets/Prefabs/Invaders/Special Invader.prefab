@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6837b62bf07764b833bdf2c9c5f127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movementSpeed: 55
+  m_movementSpeed: 50
 --- !u!114 &1410328878600355190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2602da8a8c6b4508b757e917474b1468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_timeBetweenSpawnInvaders: 4.3
-  m_maxInvaderSpawn: 5
+  m_timeBetweenSpawnInvaders: 3
+  m_maxInvaderSpawn: 4
 --- !u!1 &1410328879280809642
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,8 @@ namespace Invaders
         
         #region Properties
         public List<GameObject> InvaderRows => m_rows;
+
+        public float YPositionTarget => m_yTargetTransform != null ? m_yTargetTransform.position.y : -999999f;
         #endregion Properties
         
         

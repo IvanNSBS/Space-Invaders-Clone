@@ -68,14 +68,13 @@ namespace Invaders
             int index = random.Next(m_invadersController.InvaderRows.Count);
             
             var invader = Instantiate(m_invadersController.InvaderRows[index], m_invadersController.transform);
-            var shooter = invader.GetComponent<BulletShooter>();
             invader.transform.position = transform.position + new Vector3(0, 0.1f, 0f);
             invader.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             
             invader.transform.DOMoveY(invader.transform.position.y - 0.5f, 0.2f).SetEase(Ease.OutBack);
-            invader.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.2f).SetEase(Ease.OutQuart);            
+            invader.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.2f).SetEase(Ease.OutQuart);   
             
-            // m_invadersController.AddShooter(shooter);
+            invader.GetComponent<InvaderCheckPositionLimit>().SetYTarget(m_invadersController.YPositionTarget);
         }
         #endregion Methods
     }
