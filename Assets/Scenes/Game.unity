@@ -132,10 +132,10 @@ GameObject:
   - component: {fileID: 252419399}
   - component: {fileID: 252419403}
   - component: {fileID: 252419405}
+  - component: {fileID: 252419404}
   - component: {fileID: 252419402}
   - component: {fileID: 252419401}
   - component: {fileID: 252419400}
-  - component: {fileID: 252419404}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f8568ca37c33748911aa6ddf726c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_timeBetweenShots: 0.3
+  m_timeBetweenShots: 0.53
 --- !u!114 &252419401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +363,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 348818013}
-  m_Layer: 0
+  - component: {fileID: 348818014}
+  m_Layer: 8
   m_Name: Barricade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,13 +378,36 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348818012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.973238, y: 0.5010933, z: -9.852663}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1724087630}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &348818014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348818012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f8519ba54a46c48269c6bbab917772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rows: 6
+  m_columns: 3
+  m_barricadePrefab: {fileID: 3598385269575489343, guid: d1aac7de14dd5234ca0421f5ab47174c,
+    type: 3}
+  m_barricadeLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_barricadeCelSize: 0.5
+  m_barricadeColor: {r: 0.3137255, g: 1, b: 0, a: 1}
+  m_damagedEffect: {fileID: 2478366936800859092, guid: 88050ebb6cf742d4dace10a184e87a4e,
+    type: 3}
 --- !u!1 &384373149
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +854,148 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109864188}
   m_CullTransparentMesh: 0
+--- !u!1 &1121471310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1121471312}
+  - component: {fileID: 1121471311}
+  m_Layer: 8
+  m_Name: Barricade (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1121471311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121471310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f8519ba54a46c48269c6bbab917772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rows: 6
+  m_columns: 3
+  m_barricadePrefab: {fileID: 3598385269575489343, guid: d1aac7de14dd5234ca0421f5ab47174c,
+    type: 3}
+  m_barricadeLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_barricadeCelSize: 0.5
+  m_barricadeColor: {r: 0.3137255, g: 1, b: 0, a: 1}
+  m_damagedEffect: {fileID: 2478366936800859092, guid: 88050ebb6cf742d4dace10a184e87a4e,
+    type: 3}
+--- !u!4 &1121471312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121471310}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1724087630}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1724087629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724087630}
+  m_Layer: 8
+  m_Name: Barricades
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1724087630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724087629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.65, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 348818013}
+  - {fileID: 1121471312}
+  - {fileID: 2018758658}
+  - {fileID: 1872776574}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1872776572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872776574}
+  - component: {fileID: 1872776573}
+  m_Layer: 8
+  m_Name: Barricade (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1872776573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872776572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f8519ba54a46c48269c6bbab917772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rows: 6
+  m_columns: 3
+  m_barricadePrefab: {fileID: 3598385269575489343, guid: d1aac7de14dd5234ca0421f5ab47174c,
+    type: 3}
+  m_barricadeLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_barricadeCelSize: 0.5
+  m_barricadeColor: {r: 0.3137255, g: 1, b: 0, a: 1}
+  m_damagedEffect: {fileID: 2478366936800859092, guid: 88050ebb6cf742d4dace10a184e87a4e,
+    type: 3}
+--- !u!4 &1872776574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872776572}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1724087630}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930440131
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +1022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930440131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -883,6 +1049,7 @@ MonoBehaviour:
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
+  - {fileID: 2042555083545266665, guid: 546ccd06c52c1b44a93c96292730769a, type: 3}
   m_invaderCellSize: 0.5
   m_delayBetweenShots: 1
   m_specialInvaderPrefab: {fileID: 0}
@@ -903,6 +1070,60 @@ MonoBehaviour:
   m_startSideMovementDelay: 1.8
   m_verticalMovement: 0.3
   m_moveDownSpeed: 2.85
+--- !u!1 &2018758656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018758658}
+  - component: {fileID: 2018758657}
+  m_Layer: 8
+  m_Name: Barricade (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2018758657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018758656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f8519ba54a46c48269c6bbab917772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rows: 6
+  m_columns: 3
+  m_barricadePrefab: {fileID: 3598385269575489343, guid: d1aac7de14dd5234ca0421f5ab47174c,
+    type: 3}
+  m_barricadeLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_barricadeCelSize: 0.5
+  m_barricadeColor: {r: 0.3137255, g: 1, b: 0, a: 1}
+  m_damagedEffect: {fileID: 2478366936800859092, guid: 88050ebb6cf742d4dace10a184e87a4e,
+    type: 3}
+--- !u!4 &2018758658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018758656}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1724087630}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075466006
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,53 @@
+﻿using UnityEngine;
+using Common.Interfaces;
+
+namespace Player.Barricade
+{
+    [RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
+    public class BarricadeBlock : MonoBehaviour, IDamageable
+    {
+        #region Fields
+        private GameObject m_damagedEffect;
+        private SpriteRenderer m_spriteRenderer;
+        private Barricade m_barricade;
+        #endregion Fields
+        
+        
+        #region MonoBehaviour Methods
+        private void Awake()
+        {
+            m_spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        #endregion MonoBehaviour Methods
+        
+        
+        #region Methods
+        public void SetupBarricade(Color color, GameObject damagedEffect, Barricade barricade)
+        {
+            m_spriteRenderer.color = color;
+            m_damagedEffect = damagedEffect;
+            m_barricade = barricade;
+        }
+        #endregion Methods
+        
+        
+        #region IDamageable Methods
+        public void TakeDamage(int damage)
+        {
+            m_barricade.PlayDamagedAnimation();
+            Destroy(gameObject);
+        }
+
+        public void SpawnDamageEffect(Vector3 atLocation)
+        {
+            if (m_damagedEffect != null)
+            {
+                var effect = Instantiate(m_damagedEffect);
+                effect.transform.position = atLocation;
+            }
+        }
+        #endregion IDamageable Methods
+
+    }
+}

@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Invaders
 {
     [RequireComponent(typeof(InvadersController))]
+    #pragma warning disable CS0649
     public class InvadersMovement : MonoBehaviour
     {
         #region Inspector Fields

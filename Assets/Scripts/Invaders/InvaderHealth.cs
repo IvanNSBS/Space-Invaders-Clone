@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Invaders
 {
+    #pragma warning disable CS0649
     public class InvaderHealth : EntityHealth
     {
         #region Inspector Fields

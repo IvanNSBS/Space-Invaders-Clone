@@ -4,6 +4,7 @@ using Common.Interfaces;
 namespace Common
 {
     [RequireComponent(typeof(BoxCollider2D))]
+    #pragma warning disable CS0649
     public abstract class EntityHealth : MonoBehaviour, IDamageable
     {
         #region Inspector Fields
