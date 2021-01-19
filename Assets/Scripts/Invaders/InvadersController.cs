@@ -151,16 +151,6 @@ namespace Invaders
         {
             bool result = m_invaderShooters.Remove(shooter);
             
-            float remainingPercent = (m_rows.Count*m_numberOfInvadersInRow)/(float)m_invaderShooters.Count;
-            if (remainingPercent > 0.25f && remainingPercent < 0.6f)
-            {
-                m_invadersMovement.MoveSpeedMultiplier = 1.15f;
-            }
-            else if (remainingPercent < 0.25f)
-            {
-                m_invadersMovement.MoveSpeedMultiplier = 1.25f;
-            }
-            
             if (m_invaderShooters.Count == 0)
             {
                 Sequence sequence = DOTween.Sequence();
