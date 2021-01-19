@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Managers;
+using UnityEngine;
 using Common.Interfaces;
-using Managers;
 
 namespace Player.Barricade
 {
+    #pragma warning disable CS0649
     [RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
     public class BarricadeBlock : MonoBehaviour, IDamageable
     {
@@ -25,7 +26,6 @@ namespace Player.Barricade
         {
             m_spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
         #endregion MonoBehaviour Methods
         
         
