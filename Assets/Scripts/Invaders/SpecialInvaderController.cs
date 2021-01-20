@@ -75,6 +75,8 @@ namespace Invaders
             invader.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.2f).SetEase(Ease.OutQuart);   
             
             invader.GetComponent<InvaderCheckPositionLimit>().SetYTarget(m_invadersController.YPositionTarget);
+            
+            invader.AddComponent<PeriodicShoot>().Initialize(new Vector2(4, 16));
         }
         #endregion Methods
     }
