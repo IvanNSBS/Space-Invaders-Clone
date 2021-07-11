@@ -1,4 +1,3 @@
-# Viitra - Seleção
 ## JOGO: Space Invaders
 - Comandos para jogar: A/D ou "setas" para mover-se para o lado.
 - Spacebar ou Left Mouse para atirar
